@@ -1,10 +1,10 @@
 'use strict';
 const MODULES=[
 {id:'diagnosis',icon:'◎',title:'职业诊断',desc:'梳理过去的经验、现在的目标和可用时间，找到适合自己的起点。',label:'从认识自己开始'},
-{id:'roadmap',icon:'↗',title:'行动路线',desc:'把方向拆成 30 天的小任务，按你的节奏推进，记录每一步。',label:'让计划变成行动'},
+{id:'roadmap',icon:'↗',title:'我的路线',desc:'按模块汇总学习、实操、简历与面试成果，回看记录并安排下一步。',label:'成果与行动在一起'},
 {id:'courses',icon:'▤',title:'职场课程',desc:'沟通、管理、项目协作、办公与 AI，再加上返岗面试技巧。',label:'7 个学习方向'},
 {id:'studio',icon:'✳',title:'AI 实操工坊',desc:'用真实工作情境练习 AI 工具，核验结果，完成自己的交付版。',label:'12 类岗位任务'},
-{id:'interview',icon:'◇',title:'面试准备',desc:'练习自我介绍、职业空档说明、经验表达与工作条件沟通。',label:'6 类返岗情境'},
+{id:'interview',icon:'◇',title:'面试准备',desc:'用 STAR 梳理简历经历，结合岗位 JD 模拟面试，回看复盘与改进建议。',label:'简历修改 + 面试模拟'},
 {id:'portfolio',icon:'▧',title:'我的作品',desc:'集中查看练习成果和修改过程，整理能用于面试讲解的能力证据。',label:'积累自己的成果'},
 {id:'resources',icon:'⌁',title:'资源导航',desc:'从官方入口查找公共招聘、培训、妈妈岗与就业政策。',label:'连接可靠资源'}
 ];
