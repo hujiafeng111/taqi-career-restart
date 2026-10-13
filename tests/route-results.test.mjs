@@ -1,0 +1,8 @@
+import vm from 'node:vm';
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+const ctx={state:{profile:null,learning:{office:{done:true,note:'核对总额'},communication:{note:'<script>alert(1)</script>'}},works:[],drafts:{},resume:{result:'修改后的经历',s:'旧情境'},resumeHistory:[{id:'old',result:'历史经历'}],interviewReports:[{id:'done',target:'行政',topic:'经验',messages:[],summary:{overview:'具体行动',strengths:[],improvements:[],practicePlan:[]}}],mockInterview:{id:'active',target:'行政',topic:'经验',messages:[{role:'user',content:'我核对了数据'}],draft:'待提交'}},COURSES:[{id:'office',name:'办公',task:'核算'},{id:'communication',name:'沟通',task:'汇报'}],ROLES:[],INTERVIEW_QUESTIONS:[],document:{addEventListener(){}},esc:s=>String(s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;'),btn:(t)=>`<button>${t}</button>`,roadmapPlan:()=>'<p>诊断后生成计划</p>',mockReport:r=>r.overview,roleById:()=>({name:'行政'}),Date};vm.createContext(ctx);vm.runInContext(fs.readFileSync('public/route-results.js','utf8'),ctx);
+const page=vm.runInContext('roadmap()',ctx);assert.ok(page.includes('课程学习与笔记'));assert.ok(page.includes('历史经历'));assert.ok(page.includes('修改后的经历'));assert.ok(page.includes('进行中'));assert.ok(page.includes('已完成复盘'));assert.ok(page.includes('&lt;script&gt;'));assert.ok(!page.includes('<script>alert'));
+ctx.state.mockInterview=ctx.state.interviewReports[0];assert.equal(vm.runInContext('routeReports().length',ctx),1);
+const exported=vm.runInContext('allResultsText()',ctx);assert.ok(exported.includes('核对总额'));assert.ok(exported.includes('历史经历'));assert.ok(exported.includes('具体行动'));
+console.log('Passed: results without diagnosis, historical/current resume versions, ongoing/completed interviews, deduplication, escaped user input, full export.');
